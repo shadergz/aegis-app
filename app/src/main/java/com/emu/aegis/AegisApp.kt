@@ -1,7 +1,18 @@
 package com.emu.aegis
 
 import android.app.Application
+import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.DataStoreFactory
+import com.emu.aegis.preference.AegisSerializer
+import com.emu.aegis.preference.AegisSettings
+import java.io.File
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.Provides
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Singleton
 
+@HiltAndroidApp
 class AegisApp : Application() {
     companion object {
         lateinit var application: AegisApp
@@ -16,3 +27,13 @@ class AegisApp : Application() {
         System.loadLibrary("aegis")
     }
 }
+
+@Provides
+@Singleton
+fun provideDataStore(@ApplicationContext context: Context): DataStore<AegisSettings> =
+    DataStoreFactory.create(
+        serializer = AegisSerializer,
+        produceFile = {
+            File("${context.cacheDir.path}/aegis.preferences.ds")
+        }
+    )
