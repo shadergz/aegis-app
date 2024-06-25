@@ -7,8 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -37,7 +42,34 @@ class MainActivity : ComponentActivity() {
                                 IconButton(onClick = { /*TODO*/ }) {
                                     Icon(
                                         imageVector = Icons.Default.Settings,
-                                        contentDescription = "Open settings menu")
+                                        contentDescription = "Open settings menu"
+                                    )
+                                }
+                            }
+                        )
+                    },
+                    bottomBar = {
+                        BottomAppBar(
+                            actions = {
+                                IconButton(onClick = { /*TODO*/ }) {
+                                    Icon(
+                                        imageVector = Icons.Default.AccountCircle,
+                                        contentDescription = "Open user options"
+                                    )
+                                }
+                                IconButton(onClick = { /*TODO*/ }) {
+                                    Icon(
+                                        imageVector = Icons.Default.Delete,
+                                        contentDescription = "Delete from the list"
+                                    )
+                                }
+                            },
+                            floatingActionButton = {
+                                FloatingActionButton(onClick = { /*TODO*/ }) {
+                                    Icon(
+                                        imageVector = Icons.Default.Add,
+                                        contentDescription = "Add to the list"
+                                    )
                                 }
                             }
                         )
