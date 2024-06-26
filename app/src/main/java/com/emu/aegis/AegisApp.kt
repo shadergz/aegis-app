@@ -8,7 +8,6 @@ import com.emu.aegis.preference.AegisSerializer
 import com.emu.aegis.preference.AegisSettings
 import java.io.File
 import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.Provides
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Singleton
 
@@ -28,9 +27,8 @@ class AegisApp : Application() {
     }
 }
 
-@Provides
 @Singleton
-fun provideDataStore(@ApplicationContext context: Context): DataStore<AegisSettings> =
+fun getDataStore(@ApplicationContext context: Context): DataStore<AegisSettings> =
     DataStoreFactory.create(
         serializer = AegisSerializer,
         produceFile = {
