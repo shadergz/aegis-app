@@ -24,6 +24,10 @@ class AegisApp : Application() {
     override fun onCreate() {
         super.onCreate()
         System.loadLibrary("aegis")
+
+        CachedStorage(this).apply {
+            checkPackageDirectory()
+        }
     }
 }
 
